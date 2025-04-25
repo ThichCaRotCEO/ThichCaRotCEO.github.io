@@ -5,28 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Tool Helper</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header>
     <h1>🤖 AI Tool Helper</h1>
-    <p>Find AI tools suitable for your job</p>
+    <p>We’ll help you find the best AI tools for your workflow</p>
   </header>
 
   <main>
-    <div class="form-box">
-      <label for="job">What is your job?</label>
-      <select id="job" onchange="showSuggestions()">
-        <option value="">-- Select your job --</option>
+    <div class="form-box" id="step1">
+      <label for="job">1. What is your job?</label>
+      <select id="job">
+        <option value="">-- Select --</option>
         <option value="developer">Developer</option>
         <option value="designer">Designer</option>
         <option value="student">Student</option>
         <option value="marketer">Marketer</option>
         <option value="writer">Writer</option>
       </select>
+      <button onclick="goToStep2()">Next</button>
+    </div>
+
+    <div class="form-box" id="step2" style="display:none;">
+      <label for="work">2. What kind of work do you mostly do?</label>
+      <select id="work">
+        <option value="">-- Select --</option>
+        <option value="writing">Writing/Content Creation</option>
+        <option value="research">Research</option>
+        <option value="designing">Design/Creative Work</option>
+        <option value="coding">Coding/Programming</option>
+        <option value="communication">Communication/Collaboration</option>
+      </select>
+      <button onclick="goToStep3()">Next</button>
+    </div>
+
+    <div class="form-box" id="step3" style="display:none;">
+      <label>3. Which AI tools have you used before?</label>
+      <div>
+        <input type="checkbox" id="chatgpt" value="ChatGPT"> <label for="chatgpt">ChatGPT</label><br>
+        <input type="checkbox" id="gemini" value="Gemini"> <label for="gemini">Gemini</label><br>
+        <input type="checkbox" id="copilot" value="Copilot"> <label for="copilot">GitHub Copilot</label><br>
+        <input type="checkbox" id="claude" value="Claude"> <label for="claude">Claude</label><br>
+        <input type="checkbox" id="perplexity" value="Perplexity"> <label for="perplexity">Perplexity</label><br>
+        <input type="checkbox" id="other" onchange="toggleOtherInput()"> <label for="other">Other:</label>
+        <input type="text" id="otherInput" placeholder="Type tool name" style="display:none;">
+      </div>
+      <button onclick="showFinalResult()">Get Recommendations</button>
     </div>
 
     <div id="suggestions" class="category" style="display:none;">
-      <h2>Recommended Tools:</h2>
+      <h2>🎯 Recommended Tools:</h2>
       <ul id="tool-list"></ul>
     </div>
   </main>
@@ -34,8 +63,6 @@
   <footer>
     <p><a href="index.html">&larr; Back to Home</a></p>
   </footer>
-
-  <script src="script.js" defer></script>
 
 </body>
 </html>
