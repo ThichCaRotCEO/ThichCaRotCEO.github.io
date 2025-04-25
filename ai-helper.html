@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Tool Helper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🤖 AI Tool Helper</h1>
+    <p>Find AI tools suitable for your job</p>
+  </header>
+
+  <main>
+    <div class="form-box">
+      <label for="job">What is your job?</label>
+      <select id="job" onchange="showSuggestions()">
+        <option value="">-- Select your job --</option>
+        <option value="developer">Developer</option>
+        <option value="designer">Designer</option>
+        <option value="student">Student</option>
+        <option value="marketer">Marketer</option>
+        <option value="writer">Writer</option>
+      </select>
+    </div>
+
+    <div id="suggestions" class="category" style="display:none;">
+      <h2>Recommended Tools:</h2>
+      <ul id="tool-list"></ul>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html">&larr; Back to Home</a></p>
+  </footer>
+
+  <script>
+    const toolData = {
+      developer: ["GitHub Copilot", "Cursor IDE", "Codeium", "Tabnine"],
+      designer: ["Uizard", "Runway ML", "Khroma", "Canva AI"],
+      student: ["Notion AI", "Perplexity", "Wolfram Alpha", "Grammarly"],
+      marketer: ["Copy.ai", "Jasper", "Surfer SEO", "ChatGPT"],
+      writer: ["Quillbot", "Grammarly", "ChatGPT", "Sudowrite"]
+    };
+
+    function showSuggestions() {
+      const job = document.getElementById("job").value;
+      const suggestionBox = document.getElementById("suggestions");
+      const toolList = document.getElementById("tool-list");
+      toolList.innerHTML = "";
+
+      if (toolData[job]) {
+        toolData[job].forEach(tool => {
+          const li = document.createElement("li");
+          li.textContent = tool;
+          toolList.appendChild(li);
+        });
+        suggestionBox.style.display = "block";
+      } else {
+        suggestionBox.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
