@@ -35,32 +35,7 @@
     <p><a href="index.html">&larr; Back to Home</a></p>
   </footer>
 
-  <script>
-    const toolData = {
-      developer: ["GitHub Copilot", "Cursor IDE", "Codeium", "Tabnine"],
-      designer: ["Uizard", "Runway ML", "Khroma", "Canva AI"],
-      student: ["Notion AI", "Perplexity", "Wolfram Alpha", "Grammarly"],
-      marketer: ["Copy.ai", "Jasper", "Surfer SEO", "ChatGPT"],
-      writer: ["Quillbot", "Grammarly", "ChatGPT", "Sudowrite"]
-    };
+  <script src="script.js"></script>
 
-    function showSuggestions() {
-      const job = document.getElementById("job").value;
-      const suggestionBox = document.getElementById("suggestions");
-      const toolList = document.getElementById("tool-list");
-      toolList.innerHTML = "";
-
-      if (toolData[job]) {
-        toolData[job].forEach(tool => {
-          const li = document.createElement("li");
-          li.textContent = tool;
-          toolList.appendChild(li);
-        });
-        suggestionBox.style.display = "block";
-      } else {
-        suggestionBox.style.display = "none";
-      }
-    }
-  </script>
 </body>
 </html>
